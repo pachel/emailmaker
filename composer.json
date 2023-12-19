@@ -1,0 +1,25 @@
+{
+  "name": "pachel/emailmaker",
+  "description": "Email Template Maker",
+  "type": "library",
+  "autoload-dev": {
+    "classmap": [
+      "examples/"
+    ]
+  },
+  "autoload": {
+    "classmap": [
+      "src/"
+    ]
+  },
+  "authors": [
+    {
+      "name": "Laszlo Toth",
+      "email": "pachel82@gmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=7.2 <=8.2",
+    "phpmailer/phpmailer": "^6.8"
+  }
+}
