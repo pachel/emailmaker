@@ -3,4 +3,3 @@ vendor/
 composer.lock
 nbproject/
 dev_*
-examples/*
