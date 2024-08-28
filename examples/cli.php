@@ -5,7 +5,7 @@ use Pachel\emailMaker\Mailer;
 
 require_once __DIR__."/../vendor/autoload.php";
 
-$template = new tesztMail();
+$template = new tesztMailDev();
 
 $template->addAddress([["laszlo.toth@tdfsteel.com","Tóth László"]]);
 

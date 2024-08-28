@@ -2,7 +2,7 @@
 
 namespace Pachel\emailMaker\Examples;
 
-class tesztMail extends defaultMailTemplate
+class tesztMailDev extends devDefaultMailTemplate
 {
     protected $MAIL_SUBJECT = "Teszt mail";
 
