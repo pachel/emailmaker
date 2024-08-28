@@ -2,22 +2,25 @@
 
 namespace Pachel\emailMaker\Examples;
 
-use Pachel\emailMaker\baseEmailTemplate;
+use Pachel\emailMaker\Mailer;
+use PHPMailer\PHPMailer\PHPMailer;
 
-class defaultMailTemplate extends baseEmailTemplate
+class defaultMailTemplate extends Mailer
 {
-    protected $_template = __DIR__ . "/tpl/default.template.html";
-    protected $_content = "content";
+    protected $MAIL_SENDER = ["ttr@tdfsteel.com","TTR Termelést Támogató Rendszer"];
+    protected $MAIL_LANGUAGE = "hu";
+    protected $MAIL_CHARSET = PHPMailer::CHARSET_UTF8;
+    protected $MAIL_CONTENT_TYPE = PHPMailer::CONTENT_TYPE_TEXT_HTML;
+
+    protected $SMTP_HOST = "algonet.net";
+    protected $SMTP_PORT = 587;
+    protected $SMTP_USER = "tdfsteel_ttr";
+    protected $SMTP_PASSWORD = "62ShW9";
+    public function __construct()
+    {
+        parent::__construct();
+        $this->addTemplate(__DIR__."/tpl/default.template.html");
+    }
 
 
-    protected $_from = ["email@yourdomain.com","Your Name"];
-    protected $_reply = ["email@yourdomain.com","Your Name"];
-    protected $_config = [
-        "queue" => __DIR__ . "/../tmp/mailqueue/",
-        "mail_per_run" => 5,
-        "smtp_host"=>"yourdomain.com",
-        "smtp_user"=>"username",
-        "smtp_password"=>"password",
-        "smtp_port"=>587
-    ];
 }

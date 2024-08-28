@@ -2,13 +2,13 @@
 
 namespace Pachel\emailMaker\Examples;
 
-use Pachel\emailMaker\baseEmailTemplate;
-
-class tesztMail extends baseEmailTemplate
+class tesztMail extends defaultMailTemplate
 {
-    protected $_template = __DIR__."/tpl/first.template.html";
-    protected $_subject = "Teszt mail";
-    protected $_templateClass = defaultMailTemplate2::class;
-    public $name;
+    protected $MAIL_SUBJECT = "Teszt mail";
 
+    public function __construct()
+    {
+        parent::__construct();
+        $this->addTemplate(__DIR__."/tpl/first.template.html","#content#");
+    }
 }
