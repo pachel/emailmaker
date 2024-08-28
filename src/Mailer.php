@@ -94,6 +94,9 @@ class Mailer
         $this->MAIL_TEMPLATE = str_replace($name,file_get_contents($template_file),$this->MAIL_TEMPLATE);
         $this->mailer->msgHTML($this->MAIL_TEMPLATE);
     }
+    protected function addEmbeddedImage($path,$cid,$name = null){
+        $this->mailer->addEmbeddedImage($path,$cid,$name);
+    }
     public function replaceContent($search,$replace){
         $this->MAIL_TEMPLATE = str_replace($search,$replace,$this->MAIL_TEMPLATE);
         $this->mailer->msgHTML($this->MAIL_TEMPLATE);
