@@ -19,7 +19,7 @@ class Mailer
     protected $SMTP_PASSWORD = "";
     protected $MAIL_LANGUAGE = "hu";
     protected $MAIL_SUBJECT = "";
-    private $MAIL_TEMPLATE = "";
+    protected $MAIL_TEMPLATE = "";
     protected $MAIL_SENDER = [];//EMAIL,NAME
     protected $MAIL_REPLY = [];//EMAIL,NAME
     protected $MAIL_CHARSET = PHPMailer::CHARSET_UTF8;
