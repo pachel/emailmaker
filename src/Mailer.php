@@ -26,6 +26,8 @@ class Mailer
     protected $MAIL_CONTENT_TYPE = PHPMailer::CONTENT_TYPE_TEXT_HTML;
     protected $SMTP_AUTH = true;
 
+    protected $LAST_CONTENT = "";
+
     public function __construct()
     {
         $this->mailer = new PHPMailer();
@@ -86,6 +88,8 @@ class Mailer
         if(!file_exists($template_file)){
             new \Exception(Messages::$TEMPLATE_NOT_EXISTS);
         }
+        $this->LAST_CONTENT = file_get_contents($template_file);
+
         if(is_null($name)){
             $this->MAIL_TEMPLATE = file_get_contents($template_file);
             $this->mailer->msgHTML($this->MAIL_TEMPLATE);
@@ -98,10 +102,14 @@ class Mailer
         $this->mailer->addEmbeddedImage($path,$cid,$name);
     }
     public function replaceContent($search,$replace){
+        $this->LAST_CONTENT = str_replace($search,$replace,$this->LAST_CONTENT);
         $this->MAIL_TEMPLATE = str_replace($search,$replace,$this->MAIL_TEMPLATE);
         $this->mailer->msgHTML($this->MAIL_TEMPLATE);
     }
-
+    public function getLastContent()
+    {
+        return $this->LAST_CONTENT;
+    }
     public function __call($name, $arguments)
     {
         if (method_exists($this, $name)) {
